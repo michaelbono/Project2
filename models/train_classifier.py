@@ -80,14 +80,22 @@ def build_model():
     input: 
         none
     output:
-        constructed ML pipeline
+        constructed ML pipeline with gridsearch CV parameters
     '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
-    return pipeline
+    
+    params = {'vect__min_df': [1, 4],
+                'tfidf__use_idf': [True, False],
+                'clf__estimator__n_estimators': [10, 20],
+                'clf__estimator__min_samples_split': [2, 4]}
+    
+    cv = GridSearchCV(pipeline, param_grid=params)
+    
+    return cv
 
 def evaluate_model(model, X_test, Y_test, category_names):
     '''
