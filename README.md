@@ -4,10 +4,10 @@ Disaster Response Pipeline Project
 Michael Bono
 
 
-This project works through the ETL to modeling process in classifying messages based on their 
+This project works through the ETL to modeling process in classifying messages based on their category.
 
 
-**What's Included In This Repository **
+**What's Included In This Repository**
 
 - data/process_data.py (Python file containing code to clean and prepare data for modeling)
 - data/disaster_messages.csv (source file containing message data)
